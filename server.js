@@ -42,7 +42,7 @@ app.use(bodyParser.json({
 
 // configureer de app
 app.set('port', (process.env.PORT | config.env.webPort));
-app.set('env', (process.env.ENV | 'development'))
+app.set('env', (process.env.ENV | 'development'));
 
 // wanneer je je settings wilt controleren
 // console.dir(config);
@@ -79,8 +79,9 @@ app.use(function (err, req, res, next) {
         code: err.code,
         name: err.name,
         status: err.status
-    }
+    };
     res.status(401).send(error);
+    next();
 });
 
 // Fallback - als geen enkele andere route slaagt wordt deze uitgevoerd. 
